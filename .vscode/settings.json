@@ -1,0 +1,24 @@
+{
+  "files.exclude": {
+    ".eslintignore": true,
+    ".prettierignore": true,
+    ".gitignore": true,
+    ".npmignore": true,
+    "node_modules": true,
+    "package-lock.json": true,
+    "tsconfig.json": true,
+    ".vscode/": true,
+    ".eslintrc": true,
+    ".prettierrc": true,
+    "tailwind.config.cjs": true,
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}

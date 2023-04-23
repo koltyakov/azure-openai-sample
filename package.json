@@ -1,0 +1,27 @@
+{
+  "name": "azure-openai-sample",
+  "version": "1.0.0",
+  "description": "Azure OpenAI Sample",
+  "author": "Andrew Koltyakov <andrew.koltyakov@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "tsx ./src/server.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "fastify": "^4.15.0",
+    "node-cache": "^5.1.2",
+    "openai": "^3.2.1",
+    "zod": "^3.21.4"
+  },
+  "engines": {
+    "node": "18.16.0"
+  },
+  "volta": {
+    "node": "18.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.13",
+    "@types/node-cache": "^4.2.5"
+  }
+}

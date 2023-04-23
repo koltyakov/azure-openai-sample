@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Bare Minimum Chat</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+</head>
+<body class="overflow-hidden">
+  <!-- Just a bare minimal chat to do not bring any framework -->
+  <div class="flex h-screen antialiased text-gray-800">
+    <div class="flex flex-row h-full w-full overflow-x-hidden">
+      <div class="flex flex-col flex-auto h-full p-6">
+        <div class="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4">
+          <div id="scroller" class="flex flex-col h-full overflow-x-auto mb-4">
+            <div class="flex flex-col h-full">
+              <div id="messages" class="grid grid-cols-12 gap-y-2">
+                <div class="flex h-screen w-screen items-center justify-center absolute top-0 left-0">
+                  <div class="flex flex-col items-center justify-center mb-20">
+                    <svg class="text-gray-400" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24">
+                      <path d="M5.7898124,15.0400458 C5.92222516,15.0022135 6.06437918,15.0206689 6.18274191,15.0910584 C7.17821446,15.6830589 8.31529906,16 9.5,16 C13.0898509,16 16,13.0898509 16,9.5 C16,5.91014913 13.0898509,3 9.5,3 C5.91014913,3 3,5.91014913 3,9.5 C3,10.6847009 3.31694108,11.8217855 3.90894164,12.8172581 C3.97933113,12.9356208 3.99778647,13.0777748 3.95995425,13.2101876 L3.22801099,15.771989 L5.7898124,15.0400458 Z M16.6787004,7.32146597 C19.8088582,8.2695726 22,11.1682874 22,14.5 C22,15.791292 21.6727837,17.0357461 21.0596438,18.1387259 L21.980762,21.3626394 C22.0885265,21.7398154 21.7398154,22.0885265 21.3626394,21.980762 L18.1387259,21.0596438 C17.0357461,21.6727837 15.791292,22 14.5,22 C11.1714936,22 8.27116719,19.8126453 7.32145812,16.6786102 C6.81438749,16.5249459 6.32531045,16.3175988 5.86127413,16.0596438 L2.63736056,16.980762 C2.26018462,17.0885265 1.91147347,16.7398154 2.01923803,16.3626394 L2.94035619,13.1387259 C2.32721633,12.0357461 2,10.791292 2,9.5 C2,5.35786438 5.35786438,2 9.5,2 C12.8844665,2 15.7453349,4.24179021 16.6787004,7.32146597 L16.6787004,7.32146597 Z M16.9296994,8.46886327 C16.9760497,8.80594809 17,9.1501771 17,9.5 C17,13.6421356 13.6421356,17 9.5,17 C9.15228938,17 8.8079749,16.9762741 8.46890428,16.9296286 C9.44418788,19.352582 11.8110214,21 14.5,21 C15.6847009,21 16.8217855,20.6830589 17.8172581,20.0910584 C17.9356208,20.0206689 18.0777748,20.0022135 18.2101876,20.0400458 L20.771989,20.771989 L20.0400458,18.2101876 C20.0022135,18.0777748 20.0206689,17.9356208 20.0910584,17.8172581 C20.6830589,16.8217855 21,15.6847009 21,14.5 C21,11.8086534 19.3499538,9.44299439 16.9296994,8.46886327 L16.9296994,8.46886327 Z"/>
+                    </svg>
+                    <div class="text-sm mt-3">Send a message to start new chat</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-row items-center h-20 rounded-xl bg-white w-full px-4">
+            <div class="flex-grow">
+              <div class="relative w-full">
+                <input id="message" type="text" placeholder="Type your message here" class="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10">
+              </div>
+            </div>
+            <div class="ml-4">
+              <button id="send" class="flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-4 py-1 flex-shrink-0 h-10">
+                <span>Send</span>
+                <span class="ml-2">
+                  <svg class="w-4 h-4 transform rotate-45 -mt-px" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="templates" style="visibility: hidden;">
+    <div id="system-message">
+      <div class="col-start-1 col-end-8 p-3 rounded-lg">
+        <div class="flex flex-row">
+          <div class="flex items-center justify-center h-10 w-10 rounded-full bg-red-400 flex-shrink-0">
+            B
+          </div>
+          <div class="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl">
+            <md-block>##Text#</md-block>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="user-message">
+      <div class="col-start-6 col-end-13 p-3 rounded-lg">
+        <div class="flex justify-start flex-row-reverse">
+          <div class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0 text-white">
+            A
+          </div>
+          <div class="relative mr-3 text-sm bg-indigo-100 py-2 px-4 shadow rounded-xl">
+            <md-block>##Text#</md-block>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="processing">
+      <div class="relative rounded-xl overflow-auto p-8 col-span-12">
+        <div class="flex items-center justify-center">
+          <button type="button" class="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-xl text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed" disabled="">
+            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Processing...
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const chatMessages = [];
+
+    const renderMessages = () => {
+      const messages = document.getElementById("messages");
+      messages.innerHTML = [
+        ...chatMessages.map((message) => {
+          return document.getElementById(`${message.sender}-message`)
+            .innerHTML.replace("##Text#", message.text);;
+        }),
+        ...(chatMessages[chatMessages.length - 1].sender === "user" ? [document.getElementById("processing").innerHTML] :[])
+      ].join("");
+      setTimeout(() => {
+        const scroller = document.getElementById("scroller");
+        scroller.scroll({ top: scroller.scrollHeight, behavior: 'smooth' });
+      }, 300);
+    };
+
+    const sendMesage = (text, dlg = "anonymous") => {
+      fetch(`/ask`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text, dlg }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          chatMessages.push({ text: data.answer, sender: "system" });
+          renderMessages();
+        });
+    };
+
+    const onMessage = () => {
+      const lsKey = "room";
+      let room = localStorage.getItem(lsKey);
+      if (!room) {
+        room = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+        localStorage.setItem(lsKey, room);
+      }
+      const el = document.getElementById("message",);
+      const message = el.value;
+      sendMesage(message, room);
+      chatMessages.push({ text: message, sender: "user" });
+      renderMessages();
+      el.value = "";
+    };
+
+    (() => {
+      const messages = document.getElementById("messages");
+      document.getElementById("send").addEventListener("click", (event) => {
+        onMessage();
+      })
+      document.getElementById("message").addEventListener("keyup", (event) => {
+        if (event.key === "Enter") onMessage();
+      });
+    })();
+  </script>
+  <style>
+    pre { font-size: 12px !important; }
+  </style>
+</body>
+</html>
