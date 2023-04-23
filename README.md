@@ -97,6 +97,11 @@ While working with Azure OpenAI / ChatGPT model the user requests do not treated
 
 AI "lies" or hallucinates, it can invent a random not existing or truethful information. Always keep in mind this. Never make a decision based on AI output only.
 
+## References
+
+- [Intro to Azure OpenAI & ChatGPT (gpt-35-turbo)](https://www.youtube.com/watch?v=jskenvwlnAI)
+- [Can ChatGPT work with your enterprise data?](https://www.youtube.com/watch?v=tW2EA4aZ_YQ)
+
 ## License
 
 MIT
