@@ -56,14 +56,14 @@ This sample demonstrates how to use the Azure OpenAI service within a custom app
 
 > See self descriptive comments in code
 
-- `./src`
-  - `chat.ts` - AI chat class with OpenAI adapted for Azure
-  - `config.ts` - configuration reader
-  - `facts.ts` - sample of facts to extend AI model knowledge context
-  - `server.ts` - server
-- `./public`
-  - `index.html` - bare minimum HTML page with chat form
-- `./kb` - knowledge base folder
+- [/src](./src/)
+  - [chat.ts](./src/chat.ts) - AI chat class with OpenAI adapted for Azure <- here is the most interesting part
+  - [config.ts](./src/config.ts) - configuration reader
+  - [facts.ts](./src/facts.ts) - sample of facts to extend AI model knowledge context
+  - [server.ts](./src/server.ts) - sample server with Fastify (can be anything you like)
+- [/public](./public/)
+  - [index.html](./public/index.html) - bare minimum HTML page with chat form
+- [/kb](./kb/) - knowledge base folder
 
 ## Highlights
 
