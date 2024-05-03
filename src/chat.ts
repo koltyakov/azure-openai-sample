@@ -128,7 +128,7 @@ export class Chat {
     const facts = this.enrich ? await this.enrich(searchQuery || text) : ''; // so enrichment gets a shorter deterministic text
 
     let prompt = `<|im_start|>system\n${this.role}`;
-    if (facts) prompt += `\n\nFacts:\n${facts.trim()}`;
+    if (facts) prompt += `\n\nSources:\n${facts.trim()}`;
     prompt + `\n<|im_end|>`;
 
     for (const message of messages) {
